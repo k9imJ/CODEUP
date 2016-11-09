@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <algorithm>
+
+
+int n;
+
+
+int a[1001]={0};
+int b[1001]={0};
+
+
+int IsSorted()
+{
+	int i;
+	int z=1;
+	for(i=0;i<n;i++)
+	{
+		if(a[i]!=b[i])
+		{
+			z=0;break;
+		}
+	}
+
+    return z;
+
+}
+
+int main()
+{
+
+	scanf("%d",&n);
+
+	for(int i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+		b[i]=a[i];
+	}
+
+	for(int i=0;i<n;i++)
+	{
+		if(IsSorted())
+		{
+			printf("%d",i);
+			break;
+		}
+		for(int j=i;j<n;j++)
+		{
+			if(a[j]>a[j+1])
+			{
+				int tmp=a[j+1];
+				a[j+1]=a[j];
+				a[j]=tmp;
+			}
+
+		}
+	}
+	return 0;
+
+}
